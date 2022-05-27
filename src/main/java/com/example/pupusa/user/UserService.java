@@ -4,8 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Optional;
+
 
 @RequiredArgsConstructor
 @Service
@@ -15,10 +14,9 @@ public class UserService {
 
     @Transactional
     public Boolean Login(User user){
-
-        User user_temp = userRepository.findByUserid(user.getUserid());
+        User user_temp = userRepository.findByUserId(user.getUserId());
         if(user_temp != null) {
-            if (user.getUserpw().equals(user_temp.getUserpw())) {
+            if (user.getUserPw().equals(user_temp.getUserPw())) {
                 return true;
             } else {
                 return false;
@@ -27,9 +25,4 @@ public class UserService {
             return false;
         }
     }
-
-
-
-
-
 }

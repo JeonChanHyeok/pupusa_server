@@ -1,10 +1,13 @@
 package com.example.pupusa.user;
 
+import com.example.pupusa.Response.DupResponse;
 import com.example.pupusa.Response.JoinResponse;
 import com.example.pupusa.Response.LoginResponse;
 import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.concurrent.ExecutionException;
 
 
 @RestController
@@ -56,5 +59,22 @@ public class UserController {
             temp.setMessage("로그인 실패");
             return temp;
         }
+    }
+
+    @RequestMapping(value = "/user/joindupchk", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public DupResponse dupCheck(String email){
+        DupResponse temp = new DupResponse();
+        try{
+            User user = userRepository.findByUserId(email);
+            if(user != null){
+                temp.setCode(0);
+            }else{
+                temp.setCode(1);
+            }
+        }catch (Exception e){
+                temp.setCode(0);
+        }
+        return temp;
     }
 }
