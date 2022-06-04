@@ -13,10 +13,10 @@ public class UserService {
 
 
     @Transactional
-    public Boolean Login(User user){
-        User user_temp = userRepository.findByUserId(user.getUserId());
-        if(user_temp != null) {
-            if (user.getUserPw().equals(user_temp.getUserPw())) {
+    public Boolean Login(String userId, String userPw){
+        User user_temp = userRepository.findByUserId(userId);
+        if(user_temp != null && !user_temp.isDeleted()) {
+            if (userPw.equals(user_temp.getUserPw())) {
                 return true;
             } else {
                 return false;

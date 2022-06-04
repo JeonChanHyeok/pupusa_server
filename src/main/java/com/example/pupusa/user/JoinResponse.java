@@ -1,4 +1,4 @@
-package com.example.pupusa.Response;
+package com.example.pupusa.user;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Setter;

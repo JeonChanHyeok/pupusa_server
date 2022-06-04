@@ -25,7 +25,4 @@ public class ChatMessage {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
-
-
-
 }

@@ -37,11 +37,12 @@ public class ChatMessageController {
     public void sendMsg(String str) throws Exception{
         JsonParser jp = new JsonParser();
         JsonObject jsonObject = (JsonObject) jp.parse(str);
-        String msg = jsonObject.get("message").getAsString();
-        String roomId = jsonObject.get("roomId").getAsString();
+        String msg = jsonObject.get("messageText").getAsString();
+        String msgTime = jsonObject.get("messageTime").getAsString();
+        String roomId = jsonObject.get("chatRoomId").getAsString();
         Long roomId_long = Long.parseLong(roomId);
         String userId = jsonObject.get("userId").getAsString();
-        chatMessageRepository.save(chatMessageService.makeMsg(msg,roomId_long,userId));
+        chatMessageRepository.save(chatMessageService.makeMsg(msg,roomId_long,userId,msgTime));
         simpMessagingTemplate.convertAndSend("/topic/chat/room/" + roomId,userId);
     }
 }

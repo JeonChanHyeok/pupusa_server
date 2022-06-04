@@ -15,11 +15,12 @@ public class ChatMessageService {
     private final UserRepository userRepository;
     private final ChatMessageRepository chatMessageRepository;
 
-    public ChatMessage makeMsg(String msg, Long roomId, String userId){
+    public ChatMessage makeMsg(String msg, Long roomId, String userId, String msgTime){
         ChatMessage c = new ChatMessage();
         c.setChatRoom(chatRoomRepository.findByChatRoomId(roomId));
         c.setMessageText(msg);
         c.setUser(userRepository.findByUserId(userId));
+        c.setMessageTime(msgTime);
         return c;
     }
 
@@ -27,11 +28,12 @@ public class ChatMessageService {
         List<ChatMessageResponse> temp = new ArrayList<>();
         for(ChatMessage c : chatMessageRepository.findAllByChatRoom(chatRoomRepository.findByChatRoomId(roomId))){
             ChatMessageResponse cmr = new ChatMessageResponse();
-            cmr.setMessage(c.getMessageText());
+            cmr.setMessageText(c.getMessageText());
             cmr.setUserId(c.getUser().getUserId());
+            cmr.setMessageTime(c.getMessageTime());
+            cmr.setUserName(c.getUser().getUserName());
             temp.add(cmr);
         }
         return temp;
     }
-
 }

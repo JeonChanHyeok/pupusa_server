@@ -18,6 +18,7 @@ public class Store {
     @Column(nullable = false)
     private Long storeId;
 
+
     @Column(nullable = false)
     private String storeName;
 
