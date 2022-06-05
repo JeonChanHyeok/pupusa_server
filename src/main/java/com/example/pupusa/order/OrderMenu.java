@@ -12,13 +12,14 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-public class Order {
+public class OrderMenu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "orderId")
     private Long orderId;
-    private boolean inEnd;
+    private boolean isEnd;
+    private boolean isPay;
 
     @ManyToOne
     @JoinColumn(name = "menuId")
@@ -31,8 +32,6 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "roomId")
     private ChatRoom chatRoom;
-
-
 
 
 

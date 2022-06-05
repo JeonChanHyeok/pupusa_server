@@ -37,5 +37,7 @@ public class ChatRoom {
     @Column(name = "isEnd",nullable = false)
     private boolean isEnd;
 
+    @Column(name = "chatRoomState")
+    private Integer chatRoomState;
 
 }

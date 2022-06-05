@@ -85,6 +85,7 @@ public class ChatRoomController {
         chatroom.setUser(userRepository.findByUserId(userId));
         chatroom.setChatRoomAddress(chatRoomAddress);
         chatroom.setChatRoomInfo(chatRoomInfo);
+        chatroom.setChatRoomState(0);
         chatRoomRepository.save(chatroom);
         ChatRoomJoin chatRoomJoin = new ChatRoomJoin();
         chatRoomJoin.setChatRoom(chatroom);
@@ -132,6 +133,13 @@ public class ChatRoomController {
         }else{
             return 3;
         }
+    }
+
+    @RequestMapping(value = "/chat/getstate", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public Integer sendState(String objJson){
+        Long roomId = Long.parseLong(objJson);
+        return chatRoomRepository.findByChatRoomId(roomId).getChatRoomState();
     }
 
     //채팅방 나가기
