@@ -1,6 +1,8 @@
 package com.example.pupusa.chatRoom;
 
 import com.example.pupusa.map.AddressToXY;
+import com.example.pupusa.store.Menu;
+import com.example.pupusa.store.MenuRepository;
 import com.example.pupusa.store.StoreRepository;
 import com.example.pupusa.user.User;
 import com.example.pupusa.user.UserRepository;
@@ -20,6 +22,7 @@ public class ChatRoomController {
     private final UserRepository userRepository;
     private final ChatRoomJoinRepository chatRoomJoinRepository;
     private final StoreRepository storeRepository;
+    private final MenuRepository menuRepository;
 
 
     //채팅방 목록 불러오기

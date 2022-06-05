@@ -3,17 +3,20 @@ package com.example.pupusa.store;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @Entity
 public class Menu {
-    @Id
-    @Column(nullable = false)
-    private Long MenuId;
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "menuId")
+    private Long menuId;
 
     @ManyToOne
     @JoinColumn(name = "storeId")
@@ -30,6 +33,9 @@ public class Menu {
 
     @Column(nullable = false)
     private String menuInfo;
+
+    @Column(nullable = false)
+    private String menuCategory;
 
 
 }
