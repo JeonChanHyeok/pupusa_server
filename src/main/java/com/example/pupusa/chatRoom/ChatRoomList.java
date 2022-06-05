@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 public class ChatRoomList {
 
-    @SerializedName("chatroomlist")
-    private List<ChatRoom> chatroomlist;
+    @SerializedName("chatRoomResponses")
+    private List<ChatRoomResponse> chatRoomResponses;
 
 }

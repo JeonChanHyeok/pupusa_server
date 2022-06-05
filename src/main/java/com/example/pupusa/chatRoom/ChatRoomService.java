@@ -26,12 +26,4 @@ public class ChatRoomService {
         chatRoomRepository.save(c);
     }
 
-    public void joinChatRoom(Long roomId, String userId){
-        if(chatRoomJoinRepository.findByChatRoomAndUser(chatRoomRepository.findByChatRoomId(roomId),userRepository.findByUserId(userId)) == null){
-            ChatRoomJoin chatRoomJoin = new ChatRoomJoin();
-            chatRoomJoin.setChatRoom(chatRoomRepository.findByChatRoomId(roomId));
-            chatRoomJoin.setUser(userRepository.findByUserId(userId));
-            chatRoomJoinRepository.save(chatRoomJoin);
-        }
-    }
 }

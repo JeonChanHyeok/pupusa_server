@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ChatRoomJoinRepository extends JpaRepository<ChatRoomJoin, Long>{
-    public ChatRoomJoin findByChatRoomAndUser(ChatRoom chatRoom, User user);
+    public ChatRoomJoin findByChatRoomAndUserAndIsEnd(ChatRoom chatRoom, User user, boolean a);
+    public int countChatRoomJoinByChatRoom(ChatRoom c);
 }

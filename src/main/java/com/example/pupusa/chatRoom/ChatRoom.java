@@ -34,7 +34,7 @@ public class ChatRoom {
     @JoinColumn(name = "storeId")
     private Store store;
 
-    @Column(nullable = false)
+    @Column(name = "isEnd",nullable = false)
     private boolean isEnd;
 
 
