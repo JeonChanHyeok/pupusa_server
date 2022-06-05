@@ -12,6 +12,9 @@ public class ChatRoomJoin {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column (nullable = false)
+    boolean isEnd;
+
     @ManyToOne
     @JoinColumn(name =  "userId")
     private User user;
