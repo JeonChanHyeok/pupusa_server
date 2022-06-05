@@ -1,5 +1,6 @@
-package com.example.pupusa.store;
+package com.example.pupusa.menu;
 
+import com.example.pupusa.store.Store;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
