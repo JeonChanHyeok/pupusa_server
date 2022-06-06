@@ -39,4 +39,5 @@ public class ChatRoom {
 
     @Column(name = "chatRoomState")
     private Integer chatRoomState;
+
 }

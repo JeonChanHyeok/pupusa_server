@@ -12,6 +12,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Getter
 @Entity
+
 public class Store {
 
     @Id

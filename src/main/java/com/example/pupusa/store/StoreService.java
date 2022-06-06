@@ -15,7 +15,7 @@ public class StoreService {
 
     @Transactional
     public List<Store> getStoreList(String category, String address) {
-        List<Store> temp = storeRepository.findAllByCategory(category);
+        List<Store> temp = storeRepository.findAll();
         return temp;
         //
     }

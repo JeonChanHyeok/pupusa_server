@@ -2,7 +2,14 @@ package com.example.pupusa.store;
 
 import com.example.pupusa.chatMsg.ChatMessageRepository;
 import com.example.pupusa.chatMsg.ChatMessageService;
+import com.example.pupusa.order.OrderMenu;
+import com.example.pupusa.order.OrderResponse;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
+import org.springframework.jdbc.object.StoredProcedure;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,28 +27,13 @@ public class StoreController {
 
     @RequestMapping(value = "/store/storeload", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public StoreResponse storeLoad() {
-
+    public StoreInfoResponse storeLoad(String objJson) {
+        // 카테고리로 식당 출력하기
         System.out.println("Store access..");
-        StoreResponse temp = new StoreResponse();
-
-        List<StoreResponse> storeResponseList = new ArrayList<>();
-        for (Store s : storeRepository.findAll()) {
-            StoreResponse storeResponse = new StoreResponse();
-            storeResponse.setStoreName(s.getStoreName());
-            storeResponse.setStoreAddress(s.getStoreAddress());
-            storeResponseList.add(storeResponse);
-        }
-
-//        try {
-//            temp.setStoreList(storeService.getStoreList());
-//            return temp;
-//        } catch (Exception e){
-//            return temp;
-//        }
+        System.out.println(objJson);
 
 
-        return temp;
+        return
     }
 }
 

@@ -13,7 +13,13 @@ public interface StoreRepository extends JpaRepository<Store, Long> {
     //List<Store> findAllByCategory(String category);
 
     // Select * from store where storeId = id;
-    Store findByStoreId(Long id);
+    //Store findAllByCategory(String category);
 
-    List<Store> findAllByCategory(String category);
+    Store findByStoreId(Long id);
+    Store findByStoreName(String name);
+    Store findAllByCategory(String category);
+
+
+    //List<Store> findAllByCategory(String category);
+
 }
