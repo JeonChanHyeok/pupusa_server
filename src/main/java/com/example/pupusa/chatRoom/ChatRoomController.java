@@ -1,8 +1,7 @@
 package com.example.pupusa.chatRoom;
 
 import com.example.pupusa.map.AddressToXY;
-import com.example.pupusa.store.Menu;
-import com.example.pupusa.store.MenuRepository;
+import com.example.pupusa.menu.MenuRepository;
 import com.example.pupusa.store.StoreRepository;
 import com.example.pupusa.user.User;
 import com.example.pupusa.user.UserRepository;
