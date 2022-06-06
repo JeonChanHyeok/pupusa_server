@@ -7,4 +7,5 @@ import lombok.Setter;
 public class OrderRoomInfoResponse {
     private String storeName;
     private String pickupLocation;
+    private String masterId;
 }

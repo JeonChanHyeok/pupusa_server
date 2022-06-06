@@ -15,4 +15,5 @@ public interface StoreRepository extends JpaRepository<Store, Long> {
     // Select * from store where storeId = id;
     Store findByStoreId(Long id);
 
+    List<Store> findAllByCategory(String category);
 }

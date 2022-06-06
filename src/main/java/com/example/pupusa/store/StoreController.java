@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class StoreController {
@@ -18,16 +21,27 @@ public class StoreController {
     @RequestMapping(value = "/store/storeload", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public StoreResponse storeLoad() {
+
         System.out.println("Store access..");
         StoreResponse temp = new StoreResponse();
 
-        try {
-            temp.setStoreList(storeService.getStoreList());
-            return temp;
-        } catch (Exception e){
-            return temp;
+        List<StoreResponse> storeResponseList = new ArrayList<>();
+        for (Store s : storeRepository.findAll()) {
+            StoreResponse storeResponse = new StoreResponse();
+            storeResponse.setStoreName(s.getStoreName());
+            storeResponse.setStoreAddress(s.getStoreAddress());
+            storeResponseList.add(storeResponse);
         }
 
-    }
+//        try {
+//            temp.setStoreList(storeService.getStoreList());
+//            return temp;
+//        } catch (Exception e){
+//            return temp;
+//        }
 
+
+        return temp;
+    }
 }
+
