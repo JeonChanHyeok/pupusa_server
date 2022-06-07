@@ -47,7 +47,7 @@ public class ChatRoomController {
 
         List<ChatRoomResponse> chatRoomResponseList = new ArrayList<>();
         ChatRoomList chatRoomList = new ChatRoomList();
-        ChatRoomResponse chatRoomResponse = new ChatRoomResponse();
+
 
         Double chatRoom_x, chatRoom_y;
         for(ChatRoom c:findChatRoomList){
@@ -55,11 +55,12 @@ public class ChatRoomController {
             chatRoom_y = AddressToXY.getY(c.getChatRoomAddress());
             Double distance = AddressToXY.distance(user_x,user_y,chatRoom_x,chatRoom_y,"meter");
             if(distance<100D){
+                ChatRoomResponse chatRoomResponse = new ChatRoomResponse();
                 chatRoomResponse.setChatRoomId(c.getChatRoomId());
                 chatRoomResponse.setChatRoomAddress(c.getChatRoomAddress());
                 chatRoomResponse.setChatRoomName(c.getChatRoomName());
                 chatRoomResponse.setChatRoomStoreName(c.getStore().getStoreName());
-                chatRoomResponse.setInRoomUserCount(chatRoomJoinRepository.countChatRoomJoinByChatRoom(c));
+                chatRoomResponse.setInRoomUserCount(chatRoomJoinRepository.countChatRoomJoinByChatRoomAndIsEnd(c, false));
                 chatRoomResponseList.add(chatRoomResponse);
             }
         }
@@ -105,7 +106,7 @@ public class ChatRoomController {
         chatRoomInfoResponse.setStoreCategory(c.getStore().getCategory());
         chatRoomInfoResponse.setStoreName(c.getStore().getStoreName());
         chatRoomInfoResponse.setChatRoomName(c.getChatRoomName());
-        chatRoomInfoResponse.setChatRoomUserCount(chatRoomJoinRepository.countChatRoomJoinByChatRoom(c));
+        chatRoomInfoResponse.setChatRoomUserCount(chatRoomJoinRepository.countChatRoomJoinByChatRoomAndIsEnd(c, false));
         chatRoomInfoResponse.setChatRoomAddress(c.getChatRoomAddress());
         return chatRoomInfoResponse;
     }
@@ -120,7 +121,7 @@ public class ChatRoomController {
         User user = userRepository.findByUserId(userId);
         ChatRoomJoin c = chatRoomJoinRepository.findByChatRoomAndUserAndIsEnd(chatRoom, user, false);
         if(c == null){
-            if(chatRoomJoinRepository.countChatRoomJoinByChatRoom(chatRoom) >= 8){
+            if(chatRoomJoinRepository.countChatRoomJoinByChatRoomAndIsEnd(chatRoom, false) >= 8){
                 return 2;
             }else{
                 ChatRoomJoin chatRoomJoin = new ChatRoomJoin();
