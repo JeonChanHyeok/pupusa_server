@@ -3,6 +3,7 @@ package com.example.pupusa.user;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -14,19 +15,30 @@ public class User {
 
     @Id
     @Column(nullable = false)
-    private String userid;
+    private String userId;
 
     @Column(nullable = false)
-    private String userpw;
+    private String userPw;
 
-    public User(UserRequestDto urd){
-        this.userid = urd.getUserID();
-        this.userpw = urd.getUserPW();
-    }
+    @Column(nullable = false)
+    private String userName;
 
-    public void update(UserRequestDto urd){
-        this.userid = urd.getUserID();
-        this.userpw = urd.getUserPW();
-    }
+    @Column(nullable = false)
+    private String userPhoneNumber;
+
+    @Column(nullable = false)
+    private String userAddress;
+
+    @Column(nullable = false)
+    private boolean userSmsChk;
+
+    @Column(nullable = false)
+    private boolean userPushChk;
+
+    @Column(nullable = false)
+    private int userGrade;
+
+    @Column(nullable = false)
+    private boolean deleted;
 
 }
