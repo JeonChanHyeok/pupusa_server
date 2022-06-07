@@ -147,6 +147,7 @@ public class ChatRoomController {
     @RequestMapping(value = "/chat/exitroom", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public void exitChatRoom(String objJson){
+
     }
 
 
