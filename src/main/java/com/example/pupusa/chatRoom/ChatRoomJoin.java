@@ -23,5 +23,4 @@ public class ChatRoomJoin {
     @JoinColumn(name = "chatRoomId")
     private ChatRoom chatRoom;
 
-
 }

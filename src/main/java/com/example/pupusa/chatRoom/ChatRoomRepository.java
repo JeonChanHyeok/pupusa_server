@@ -1,5 +1,6 @@
 package com.example.pupusa.chatRoom;
 
+import com.example.pupusa.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,6 +18,14 @@ public interface ChatRoomRepository extends JpaRepository<ChatRoom, Long> {
 
     @Modifying
     @Transactional
+
+    @Query("UPDATE ChatRoom SET unLuckyMan=:unLuckyMan WHERE chatRoomId=:chatRoomId")
+    int updateUnluckyMan(@Param(value="unLuckyMan") User unLuckyMan, @Param(value="chatRoomId") Long chatRoomId);
+
+
+    @Modifying
+    @Transactional
+
     @Query("UPDATE ChatRoom SET chatRoomState=:chatRoomState WHERE chatRoomId=:chatRoomId")
     int updateChatRoomState(@Param(value="chatRoomState")Integer num, @Param(value="chatRoomId") Long chatRoomId);
 }
