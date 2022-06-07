@@ -40,4 +40,8 @@ public class ChatRoom {
     @Column(name = "chatRoomState")
     private Integer chatRoomState;
 
+    @OneToOne
+    @JoinColumn(name = "unLuckyMan")
+    private User unLuckyMan;
+
 }
