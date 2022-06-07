@@ -6,7 +6,7 @@ import com.example.pupusa.chatRoom.ChatRoomRepository;
 
 import com.example.pupusa.menu.MenuRepository;
 
-import com.example.pupusa.store.MenuRepository;
+import com.example.pupusa.menu.MenuRepository;
 import com.example.pupusa.user.User;
 
 import com.example.pupusa.user.UserRepository;
