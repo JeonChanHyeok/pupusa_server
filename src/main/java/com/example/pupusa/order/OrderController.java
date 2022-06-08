@@ -99,6 +99,7 @@ public class OrderController {
             OrderResponse orderResponse = new OrderResponse();
             orderResponse.setMenuName(o.getMenu().getMenuName());
             orderResponse.setUserName(o.getUser().getUserName());
+            orderResponse.setPrice(o.getMenu().getMenuPrice());
             orderResponseLists.add(orderResponse);
         }
         orderResponseList.setOrderResponseList(orderResponseLists);
@@ -166,6 +167,16 @@ public class OrderController {
             orderRepository.updateOrderMenu(true, o.getOrderId());
         }
         simpMessagingTemplate.convertAndSend("/topic/chat/pay/" + roomId,userId);
+    }
+
+    @RequestMapping(value = "/order/changeloc", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public void changeLocation(String objJson){
+        JsonParser jp = new JsonParser();
+        JsonObject jsonObject = (JsonObject) jp.parse(objJson);
+        String address = jsonObject.get("address").getAsString();
+        Long roomId = jsonObject.get("roomId").getAsLong();
+        chatRoomRepository.updateChatRoomAddress(address,roomId);
     }
 
 }

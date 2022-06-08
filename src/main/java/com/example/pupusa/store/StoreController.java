@@ -62,5 +62,31 @@ public class StoreController {
         System.out.println(storeResponseLists);
         return storeResponseList;
     }
+    @RequestMapping(value = "/store/login", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public StoreLoginResponse loginStore(String objJson){
+        StoreLoginResponse storeLoginResponse = new StoreLoginResponse();
+        Long storeId = Long.parseLong(objJson);
+        Store s = storeRepository.findByStoreId(storeId);
+        if(s != null){
+            storeLoginResponse.setCode(1);
+        }else{
+            storeLoginResponse.setCode(0);
+        }
+        return storeLoginResponse;
+    }
+    @RequestMapping(value = "/store/loadinfo", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public InStoreInfoResponse storeInfoLoad(String objJson){
+        InStoreInfoResponse inStoreInfoResponse = new InStoreInfoResponse();
+        Long storeId = Long.parseLong(objJson);
+        System.out.println("storeId: " +objJson);
+        System.out.println("storename: " +storeRepository.findByStoreId(storeId).getStoreName());
+        inStoreInfoResponse.setStoreName(storeRepository.findByStoreId(storeId).getStoreName());
+        inStoreInfoResponse.setCategory(storeRepository.findByStoreId(storeId).getCategory());
+        return inStoreInfoResponse;
+    }
+
+
 }
 

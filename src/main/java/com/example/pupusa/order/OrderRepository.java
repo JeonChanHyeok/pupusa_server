@@ -23,6 +23,8 @@ public interface OrderRepository extends JpaRepository<OrderMenu, Long> {
 
     List<OrderMenu> findAllByChatRoomAndUser(ChatRoom c, User user);
 
+
+
     @Modifying
     @Transactional
     @Query("UPDATE OrderMenu SET isPay=:isPay WHERE orderId=:orderId")
